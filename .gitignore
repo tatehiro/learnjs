@@ -2,4 +2,4 @@
 dist
 working
 master
-conf/cognito/identity_pools/learnjs/*.json
+conf/**/*.json
