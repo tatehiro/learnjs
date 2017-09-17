@@ -3,6 +3,8 @@
   <head>
     <meta charset='utf-8'>
     <title>Learn JS!</title>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="434439412221-ft2btg5dcivid84g000ddc2viac27dum.apps.googleusercontent.com" />
     <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.2/normalize.min.css'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css'>
@@ -11,6 +13,9 @@
     <script src='/app.js'></script>
     <style type="text/css" media="all">
       body { margin-top: 30px; }
+      .landing-view,
+      .profile-view,
+      .problem-view {margin-top:50px;}
       .templates {display: none;}
       .inline-list {
         margin-bottom: 0px;
@@ -35,9 +40,14 @@
       .nav-container {
         padding-left:40px;
         background: #666;
+        height:50px;
       }
       .nav-container a { color: white; }
-      .text-lg { font-size:20px;}
+      .text-lg { font-size:1.5em;}
+      .navbar-padding {
+        padding-top: 7px;
+        display: inline-block;
+      }
     </style>
   </head>
   <body>
@@ -47,21 +57,33 @@
           <li><a class='text-lg' href="#">LearnJS</a></li>
           <li><a class='#problem-1'>Start</a></li>
         </ul>
+        <div class='four columns signin-bar'>
+          <span class='navbar-padding u-pull-right'>
+            <span class="g-signin2" data-onsuccess="googleSignIn"></span>
+          </span>
+        </div>
       </div>
       <div class='view-container container'>
       </div>
       <div class="templates">
           <li class="skip-btn"><a>Skip This Problem</a></li>
           <div class='landing-view'>
-          <div class='row'>
-            <div class='one-half column'>
-              <h3>Learn JavaScript, one puzzle at a time.</h3>
-              <a href="#problem-1" class="button button-primary">Start Now!</a>
+            <div class='row'>
+              <div class='one-half column'>
+                <h3>Learn JavaScript, one puzzle at a time.</h3>
+                <a href="#problem-1" class="button button-primary">Start Now!</a>
+              </div>
+              <div class='one-half column'>
+                <img src='/images/HeroImage.jpg' />
+              </div>
             </div>
-            <div class='one-half column'>
-              <img src='/images/HeroImage.jpg' />
-            </div>
-          </div>
+        </div>
+        <div class='profile-view'>
+          <h3>Your Profile</h3>
+          <div class='email'></div>
+        </div>
+        <div class='profile-link navbar-padding-lg'>
+          <a href='#profile'></a>
         </div>
         <div class="problem-view">
           <h3 class='title'></h3>
