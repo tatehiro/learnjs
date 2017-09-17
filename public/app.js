@@ -157,19 +157,12 @@ function googleSignIn(googleUser) {
             var creds = AWS.config.credentials;
             var newToken = userUpdate.getAuthResponse().id_token;
             creds.params.Logins['accounts.google.com'] = newToken;
-            return learnjs.awsRefresh().then(function(id){
-                console.log('awsRefresh then');
-                learnjs.identity.resolve({
-                    id:id,
-                    email:googleUser.getBasicProfile().getEmail(),
-                    refresh: refresh
-                });
-            });
+            return learnjs.awsRefresh();
         });
     }
     console.log(googleUser.getAuthResponse().expires_in);
     console.log(googleUser.getAuthResponse().expires_at);
-    refresh();
+    // refresh();
     var id_token = googleUser.getAuthResponse().id_token;
     AWS.config.update({
         region: 'ap-northeast-1',
@@ -179,5 +172,13 @@ function googleSignIn(googleUser) {
                 'accounts.google.com': id_token
             }
         })
+    });
+    return learnjs.awsRefresh().then(function(id){
+        console.log('awsRefresh then');
+        learnjs.identity.resolve({
+            id:id,
+            email:googleUser.getBasicProfile().getEmail(),
+            refresh: refresh
+        });
     });
 }
